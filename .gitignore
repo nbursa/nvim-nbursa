@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# Swap/backup files
+*.swp
+*.swo
+*.bak
+
+# Lua compiled
+*.luac
+
+# Lazy plugins (optional, ako ne želiš da ih verzioniseš)
+lua_modules/
+site/
+
