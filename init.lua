@@ -51,6 +51,15 @@ require("lazy").setup({
 	{ "lewis6991/gitsigns.nvim", opts = {} },
 	{ "tpope/vim-fugitive" },
 
+	--	{
+	--		"vim-airline/vim-airline",
+	--		lazy = false,
+	--	},
+	--	{
+	--		"vim-airline/vim-airline-themes",
+	--		lazy = false,
+	--	},
+
 	-- Formatter
 	{
 		"stevearc/conform.nvim",
@@ -67,6 +76,10 @@ require("lazy").setup({
 					yaml = { "prettier" },
 					python = { "black" },
 				},
+				format_on_save = {
+					timeout_ms = 5000,
+					lsp_fallback = true,
+				},
 			})
 
 			vim.api.nvim_create_autocmd("BufWritePre", {
@@ -80,6 +93,59 @@ require("lazy").setup({
 			})
 		end,
 	},
+	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("bufferline").setup({
+				options = {
+					mode = "buffers",
+					separator_style = "slant", -- ugaoni izgled
+					always_show_bufferline = true,
+					show_buffer_close_icons = false,
+					show_close_icon = false,
+					diagnostics = "nvim_lsp",
+					offsets = {
+						{
+							filetype = "NvimTree",
+							text = "Explorer",
+							highlight = "Directory",
+							text_align = "left",
+							separator = true,
+						},
+					},
+					themable = true,
+					indicator = {
+						style = "icon",
+					},
+				},
+			})
+		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				highlight = { enable = true },
+				indent = { enable = true },
+				ensure_installed = { "tsx", "javascript", "typescript", "html", "css", "vue" },
+				-- context_commentstring = {
+				-- 	enable = true,
+				-- 	enable_autocmd = false,
+				-- },
+			})
+		end,
+	},
+	{ "numToStr/Comment.nvim", opts = {} },
+	{ "JoosepAlviste/nvim-ts-context-commentstring" },
+})
+
+vim.g.skip_ts_context_commentstring_module = true
+
+require("ts_context_commentstring").setup({
+	enable_autocmd = false,
 })
 
 -- nvim-tree
@@ -91,6 +157,10 @@ require("nvim-tree").setup({
 	filters = {
 		dotfiles = false,
 	},
+})
+
+require("Comment").setup({
+	pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
 })
 
 vim.keymap.set("n", "<leader>e", function()
@@ -146,6 +216,9 @@ vim.keymap.set("n", "dd", '"_dd', { desc = "Delete line (no yank)" })
 vim.keymap.set("n", "D", '"_D', { desc = "Delete to EOL (no yank)" })
 vim.keymap.set("n", "d", '"_d', { desc = "Delete motion (no yank)", noremap = true, expr = false })
 
+vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { desc = "Prev buffer" })
+
 -- nvim-cmp
 local cmp = require("cmp")
 local luasnip = require("luasnip")
@@ -193,12 +266,38 @@ require("tokyonight").setup({
 vim.cmd.colorscheme("tokyonight")
 
 require("lualine").setup({
+	options = {
+		theme = "tokyonight",
+		section_separators = { left = "", right = "" },
+		component_separators = { left = "", right = "" },
+	},
 	sections = {
+		lualine_a = { "mode" },
 		lualine_b = { "branch" },
 		lualine_c = { "filename" },
 		lualine_x = { "encoding", "fileformat", "filetype" },
+		lualine_y = { "progress" },
+		lualine_z = { "location" },
 	},
 })
+
+--vim.api.nvim_create_autocmd("User", {
+--	pattern = "LazyDone",
+--	callback = function()
+--		vim.cmd([[
+--      let g:airline_theme = 'superman'
+--      let g:airline_powerline_fonts = 1
+--
+--      " Enable smart tabline (buffer tabs at top)
+--      let g:airline#extensions#tabline#enabled = 1
+--      let g:airline#extensions#tabline#formatter = 'default'
+--
+--      " Use angled powerline separators
+--      let g:airline#extensions#tabline#left_sep = ''
+--      let g:airline#extensions#tabline#left_alt_sep = ''
+--    ]])
+--	end,
+--})
 
 -- Remove background colors
 vim.cmd([[
