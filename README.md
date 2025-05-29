@@ -2,7 +2,7 @@
 
 My personal Neovim IDE setup — focused, minimal, and production-ready.
 
-## 🔧 Features
+## Features
 
 - `lazy.nvim` plugin manager
 - Full LSP + Autocomplete (`nvim-lspconfig`, `nvim-cmp`, `LuaSnip`)
@@ -15,7 +15,7 @@ My personal Neovim IDE setup — focused, minimal, and production-ready.
   - Python
   - HTML / CSS / Tailwind
 
-## ⌨️ Keybinds
+## Keybinds
 
 | Action            | Shortcut       |
 |-------------------|----------------|
@@ -26,18 +26,18 @@ My personal Neovim IDE setup — focused, minimal, and production-ready.
 | Paste from clip   | `<leader>p`    |
 | Autocomplete      | `<C-Space>`    |
 
-## 📁 Structure
+## Structure
 
 This is my `~/.config/nvim/` folder.  
 It includes everything required to run a full Neovim IDE setup.
 
-## 🚀 Install
+## Install
 
 ```bash
 git clone git@github.com:nbursa/nvim-nbursa.git ~/.config/nvim
 ```
 
-## 📦 Requires
+## Requires
 
 Neovim ≥ 0.9, plus:
 
