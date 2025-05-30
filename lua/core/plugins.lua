@@ -102,7 +102,14 @@ require("lazy").setup({
 			require("nvim-treesitter.configs").setup({
 				highlight = { enable = true },
 				indent = { enable = true },
-				ensure_installed = { "tsx", "javascript", "typescript", "html", "css", "vue" },
+				ensure_installed = {
+					"tsx",
+					"javascript",
+					"typescript",
+					"html",
+					"css",
+					"vue",
+				},
 			})
 		end,
 	},
