@@ -21,7 +21,17 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{ "neovim/nvim-lspconfig" },
-	{ "folke/tokyonight.nvim" },
+	-- { "folke/tokyonight.nvim" },
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		config = function()
+			require("rose-pine").setup({
+				disable_background = true, -- koristiš transparentnost
+			})
+			vim.cmd("colorscheme rose-pine")
+		end,
+	},
 	{ "hrsh7th/nvim-cmp" },
 	{ "hrsh7th/cmp-nvim-lsp" },
 	{ "L3MON4D3/LuaSnip" },
