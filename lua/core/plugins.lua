@@ -38,12 +38,12 @@ function M.setup()
 		},
 
 		-- ✦ bufferline (top bar)
-		{
-			"akinsho/bufferline.nvim",
-			version = "*",
-			dependencies = { "nvim-tree/nvim-web-devicons" },
-			config = function()
-				require("bufferline").setup({
+                {
+                        "akinsho/bufferline.nvim",
+                        version = "*",
+                        dependencies = { "nvim-tree/nvim-web-devicons" },
+                        config = function()
+                                require("bufferline").setup({
 					options = {
 						mode = "buffers",
 						separator_style = "slant",
@@ -58,9 +58,15 @@ function M.setup()
 							},
 						},
 					},
-				})
-			end,
-		},
+                                })
+                        end,
+                },
+
+                -- ✦ tabline
+                {
+                        "nanozuki/tabby.nvim",
+                        dependencies = { "nvim-tree/nvim-web-devicons" },
+                },
 
 		-- ✦ statusline (bottom)
 		{
