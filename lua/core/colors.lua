@@ -1,26 +1,34 @@
-vim.g.skip_ts_context_commentstring_module = true
+local function safe_require(m)
+	local ok, pkg = pcall(require, m)
+	return ok and pkg or nil
+end
 
-require("ts_context_commentstring").setup({
-	enable_autocmd = false,
-})
+-- commentstring (for tsx / jsx)
+local tscc = safe_require("ts_context_commentstring")
+if tscc then
+	tscc.setup({ enable_autocmd = false })
+end
 
--- require("tokyonight").setup({
--- 	style = "night",
--- 	transparent = true,
--- })
---
--- vim.cmd.colorscheme("tokyonight")
--- require("rose-pine").setup({
---     style="dark"
---     transparent = false
---   })
---
--- vim.o.background = "dark"
--- vim.cmd.colorscheme("rose-pine")
+-- preferred greyscale — VSCode Dark as u screenshot
+local theme_set = pcall(function()
+	local vscode = require("vscode")
+	vscode.setup({
+		style = "dark",
+		transparent = false,
+		group_overrides = {
+			Normal = { bg = "#1a1a1a" },
+			NormalNC = { bg = "#1a1a1a" },
+			NormalFloat = { bg = "#1a1a1a" },
+			EndOfBuffer = { bg = "#1a1a1a" },
+			NvimTreeNormal = { bg = "#1a1a1a" },
+			NvimTreeNormalNC = { bg = "#1a1a1a" },
+		},
+	})
+	vim.cmd.colorscheme("vscode")
+end)
 
-vim.cmd([[
-  hi Normal guibg=NONE ctermbg=NONE
-  hi NormalNC guibg=NONE ctermbg=NONE
-  hi NormalFloat guibg=NONE ctermbg=NONE
-  hi EndOfBuffer guibg=NONE ctermbg=NONE
-]])
+-- fallback
+if not theme_set then
+	require("nightfox") -- ensures installed
+	vim.cmd.colorscheme("carbonfox")
+end

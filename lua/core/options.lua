@@ -1,11 +1,32 @@
-vim.g.mapleader = " "
+local o = vim.o
+local wo = vim.wo
+local g = vim.g
 
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.mouse = "a"
-vim.opt.clipboard = "unnamedplus"
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.scrolloff = 3
-vim.opt.termguicolors = true
+o.clipboard = "unnamed,unnamedplus"
+
+-- UI
+o.termguicolors = true
+o.background = "dark"
+o.cursorline = true
+o.number = true
+o.relativenumber = false
+o.signcolumn = "yes"
+o.updatetime = 250
+wo.wrap = false
+
+-- splits
+o.splitbelow = true
+o.splitright = true
+
+-- tabs / indents
+o.expandtab = true
+o.shiftwidth = 2
+o.tabstop = 2
+o.smartindent = true
+
+-- search
+o.ignorecase = true
+o.smartcase = true
+
+-- misc
+g.mapleader = " "

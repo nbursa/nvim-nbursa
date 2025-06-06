@@ -1,10 +1,9 @@
-require("core.plugins")
 require("core.options")
+require("core.plugins").setup()
 require("core.colors")
+require("core.statusline")
 require("core.nvimtree")
 require("core.lsp")
 require("core.cmp")
-require("core.statusline")
 require("core.keymaps")
 require("core.autocmds")
-
