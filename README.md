@@ -9,6 +9,7 @@ My personal Neovim IDE setup — focused, minimal, and production-ready.
 - Formatter on save via `conform.nvim`
 - File tree (`nvim-tree`)
 - Fuzzy finder (`telescope`)
+- Kanagawabones color scheme
 - Preconfigured for:
   - Go
   - JavaScript / TypeScript

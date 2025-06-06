@@ -20,6 +20,7 @@ function M.setup()
 		{ "Mofiqul/vscode.nvim", lazy = false, priority = 1000 },
 		{ "kdheepak/monochrome.nvim", lazy = false, priority = 1000 },
 		{ "EdenEast/nightfox.nvim", lazy = false, priority = 1000 },
+		{ "mcchrish/zenbones.nvim", dependencies = { "rktjmp/lush.nvim" }, lazy = false, priority = 1000 },
 
 		-- ✦ file-explorer
 		{
