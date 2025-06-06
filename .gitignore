@@ -5,6 +5,7 @@
 *.swp
 *.swo
 *.bak
+.vscode
 
 # Lua compiled
 *.luac
