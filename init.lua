@@ -1,7 +1,7 @@
 require("core.options")
 require("core.plugins").setup()
 require("core.colors")
-require("core.statusline")
+require("core.feline")
 require("core.tabby")
 require("core.nvimtree")
 require("core.lsp")

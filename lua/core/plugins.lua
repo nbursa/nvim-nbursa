@@ -68,14 +68,14 @@ function M.setup()
                         dependencies = { "nvim-tree/nvim-web-devicons" },
                 },
 
-		-- ✦ statusline (bottom)
-		{
-			"nvim-lualine/lualine.nvim",
-			dependencies = { "nvim-tree/nvim-web-devicons" },
-			opts = {
-				options = { theme = "auto", section_separators = "", component_separators = "" },
-			},
-		},
+                -- ✦ statusline (bottom)
+                {
+                        "famiu/feline.nvim",
+                        dependencies = { "nvim-tree/nvim-web-devicons" },
+                        config = function()
+                                require("core.feline")
+                        end,
+                },
 
 		-- ✦ LSP + completion
 		{ "neovim/nvim-lspconfig" },
