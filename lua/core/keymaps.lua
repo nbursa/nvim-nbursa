@@ -18,7 +18,7 @@ end, { desc = "Toggle file tree" })
 -- 	end
 -- end, { desc = "Toggle NvimTree and focus" })
 
-vim.keymap.set("n", "<leader>e", ":Ex<CR>", { desc = "Open file explorer (netrw)" })
+vim.keymap.set("n", "<leader>n", ":Ex<CR>", { desc = "Open file explorer (netrw)" })
 
 -- Telescope
 vim.keymap.set("n", "<leader>f", function()
