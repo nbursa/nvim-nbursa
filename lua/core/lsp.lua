@@ -3,7 +3,7 @@ local lspconfig = require("lspconfig")
 lspconfig.gopls.setup({
 	cmd = { "gopls" },
 })
-lspconfig.tsserver.setup({})
+lspconfig.ts_ls.setup({})
 lspconfig.pyright.setup({})
 lspconfig.html.setup({})
 lspconfig.cssls.setup({})
